@@ -1,0 +1,83 @@
+{
+  "groups": [
+    { "name": "Core", "rank": 0 },
+    { "name": "Libraries", "rank": 1 },
+    { "name": "Gameplay", "rank": 2 },
+    { "name": "Cosmetic", "rank": 3 }
+  ],
+  "mods": [
+    {
+      "name": "BepInEx",
+      "author": "BepInEx Team",
+      "gitPath": "BepInEx/BepInEx",
+      "group": "Core",
+      "required": true,
+      "tagPrefix": "v5.",
+      "assetPattern": "^BepInEx_(win_)?x64_[0-9.]+\\.zip$",
+      "fallbackVersion": "v5.4.23.5",
+      "fallbackUrl": "https://github.com/BepInEx/BepInEx/releases/download/v5.4.23.5/BepInEx_win_x64_5.4.23.5.zip"
+    },
+    {
+      "name": "Utilla",
+      "author": "Bobbie",
+      "gitPath": "legoandmars/Utilla",
+      "group": "Libraries",
+      "releaseId": 0
+    },
+    {
+      "name": "Newtonsoft.JSON",
+      "author": "James Newton-King",
+      "gitPath": "legoandmars/Newtonsoft.Json",
+      "group": "Libraries",
+      "releaseId": 0
+    },
+    {
+      "name": "Bepinject",
+      "author": "Auros",
+      "gitPath": "Auros/Bepinject",
+      "group": "Libraries",
+      "releaseId": 0,
+      "installPath": "BepInEx/plugins",
+      "dependencies": [ "Extenject" ]
+    },
+    {
+      "name": "Extenject",
+      "author": "svermeulen",
+      "gitPath": "Auros/Bepinject",
+      "group": "Libraries",
+      "releaseId": 1,
+      "installPath": "BepInEx/plugins"
+    },
+    {
+      "name": "Computer Interface",
+      "author": "Toni Macaroni",
+      "gitPath": "ToniMacaroni/ComputerInterface",
+      "group": "Libraries",
+      "releaseId": 0,
+      "dependencies": [ "Bepinject" ]
+    },
+    {
+      "name": "Space Monke",
+      "author": "Bobbie",
+      "gitPath": "legoandmars/SpaceMonke",
+      "group": "Gameplay",
+      "releaseId": 0,
+      "dependencies": [ "Utilla" ]
+    },
+    {
+      "name": "Monke Mod Menu",
+      "author": "jeydevv",
+      "gitPath": "jeydevv/MonkeModMenu",
+      "group": "Gameplay",
+      "releaseId": 1
+    },
+    {
+      "name": "Gorilla Cosmetics",
+      "author": "Bobbie",
+      "gitPath": "legoandmars/GorillaCosmetics",
+      "group": "Cosmetic",
+      "releaseId": 0,
+      "dependencies": [ "Newtonsoft.JSON" ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>MonkeModManager</RootNamespace>
+    <AssemblyName>MonkeModManager</AssemblyName>
+    <ApplicationIcon>monke_transparent.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Version>2.0.0</Version>
+    <Product>Monke Mod Manager</Product>
+    <Description>Installs and updates BepInEx and mods for Gorilla Tag.</Description>
+    <Copyright>Copyright © 2021-2026 Monke Mod Manager contributors</Copyright>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Lets the project build with the dotnet CLI on any OS. -->
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="monke.png" LogicalName="MonkeModManager.monke.png" />
+    <!-- Offline fallback copy of the mod list; the live copy is fetched from GitHub on launch. -->
+    <EmbeddedResource Include="..\mods.json" Link="mods.json" LogicalName="MonkeModManager.mods.json" />
+  </ItemGroup>
+
+</Project>
