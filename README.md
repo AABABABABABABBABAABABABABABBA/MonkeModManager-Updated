@@ -21,9 +21,16 @@ It installs **BepInEx** and mods into Gorilla Tag and can be re-run to update th
 
 ## Download
 
-Grab `MonkeModManager.exe` from the [Releases](../../releases) page (or from the latest
-[Actions](../../actions) build artifact) and run it. It asks for admin rights because Gorilla Tag
+A ready-to-run build is in this repo at [`Release/MonkeModManager.exe`](Release/MonkeModManager.exe).
+Download it and run it. You can also get it from the [Releases](../../releases) page or the latest
+[Actions](../../actions) build artifact. It asks for admin rights because Gorilla Tag
 is usually installed under Program Files.
+
+## Mod menu template
+
+[`MonkeMenuTemplate/`](MonkeMenuTemplate) is a starter in-game mod menu (a BepInEx plugin) you can build your own
+mod on top of. It has categories, pages, toggle/one-shot buttons and a few example mods, and gameplay
+mods automatically switch off outside modded lobbies. See its [README](MonkeMenuTemplate/README.md).
 
 ## Adding / editing mods
 
@@ -51,6 +58,9 @@ dotnet build MonkeModManager.sln -c Release
 
 Works on Windows, macOS or Linux (thanks to `Microsoft.NETFramework.ReferenceAssemblies`).
 Output: `MonkeModManager/bin/Release/net472/MonkeModManager.exe`.
+
+After changing the code, rebuild and copy the exe over `Release/MonkeModManager.exe` so the
+committed build stays current.
 
 To release: push a tag like `v2.0.0` and the workflow attaches the exe to a GitHub release.
 Bump `<Version>` in `MonkeModManager.csproj` first so the in-app update check works.

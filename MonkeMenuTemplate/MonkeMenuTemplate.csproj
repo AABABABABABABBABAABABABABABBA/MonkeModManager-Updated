@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Build:  dotnet build -c Release
+    If Gorilla Tag isn't in the default Steam folder, either edit GamePath below or run:
+            dotnet build -c Release -p:GamePath="D:\SteamLibrary\steamapps\common\Gorilla Tag"
+    The built DLL is copied into BepInEx\plugins automatically.
+  -->
+  <PropertyGroup>
+    <GamePath Condition="'$(GamePath)' == ''">C:\Program Files (x86)\Steam\steamapps\common\Gorilla Tag</GamePath>
+    <ManagedPath>$(GamePath)\Gorilla Tag_Data\Managed</ManagedPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>MonkeMenu</AssemblyName>
+    <RootNamespace>MonkeMenu</RootNamespace>
+    <Version>1.0.0</Version>
+    <Nullable>disable</Nullable>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <!-- Unity marks some old APIs (like Rigidbody.velocity) obsolete in newer versions; they still work. -->
+    <NoWarn>$(NoWarn);CS0618</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="BepInEx" HintPath="$(GamePath)\BepInEx\core\BepInEx.dll" Private="false" />
+    <Reference Include="Assembly-CSharp" HintPath="$(ManagedPath)\Assembly-CSharp.dll" Private="false" />
+    <Reference Include="UnityEngine" HintPath="$(ManagedPath)\UnityEngine.dll" Private="false" />
+    <Reference Include="UnityEngine.CoreModule" HintPath="$(ManagedPath)\UnityEngine.CoreModule.dll" Private="false" />
+    <Reference Include="UnityEngine.PhysicsModule" HintPath="$(ManagedPath)\UnityEngine.PhysicsModule.dll" Private="false" />
+    <Reference Include="UnityEngine.TextRenderingModule" HintPath="$(ManagedPath)\UnityEngine.TextRenderingModule.dll" Private="false" />
+  </ItemGroup>
+
+  <Target Name="CopyToPlugins" AfterTargets="Build" Condition="Exists('$(GamePath)\BepInEx\plugins')">
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(GamePath)\BepInEx\plugins\MonkeMenu" />
+    <Message Importance="high" Text="Copied $(TargetFileName) to $(GamePath)\BepInEx\plugins\MonkeMenu" />
+  </Target>
+
+</Project>
